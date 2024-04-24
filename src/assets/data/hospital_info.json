@@ -1,0 +1,107 @@
+{
+  "CHU MUSTAPHA": {
+    "id": 0,
+    "lat": 0,
+    "lng": 0
+  },
+  "CHU BENI MESSOUS": {
+    "id": 1,
+    "lat": 0,
+    "lng": 0
+  },
+  "CHU PARNET": {
+    "id": 2,
+    "lat": 0,
+    "lng": 0
+  },
+  "CHU BAB EL OUED": {
+    "id": 3,
+    "lat": 0,
+    "lng": 0
+  },
+  "EPH BOLOGHINE IBN ZIRI": {
+    "id": 4,
+    "lat": 0,
+    "lng": 0
+  },
+  "EPH EL HARRACH (HASSEN BADI)": {
+    "id": 5,
+    "lat": 0,
+    "lng": 0
+  },
+  "EPH ALI MEGHRAOUI AIN TAYA": {
+    "id": 6,
+    "lat": 0,
+    "lng": 0
+  },
+  "EPH KOUBA (BACHIR MENTOURI)": {
+    "id": 7,
+    "lat": 0,
+    "lng": 0
+  },
+  "EPH ZERALDA (BOUKACEMI TAYEB)": {
+    "id": 8,
+    "lat": 0,
+    "lng": 0
+  },
+  "CHU DJELLALI BOUNAAMA DOUERA": {
+    "id": 9,
+    "lat": 0,
+    "lng": 0
+  },
+  "EPH ROUIBA": {
+    "id": 10,
+    "lat": 0,
+    "lng": 0
+  },
+  "EHS MEDECINE DU SPORT ET CARDIO VASCULAIRE DR M": {
+    "id": 11,
+    "lat": 0,
+    "lng": 0
+  },
+  "EPH DES URGENCES MEDICO- CHIRURGICALES SALIM ZM": {
+    "id": 12,
+    "lat": 0,
+    "lng": 0
+  },
+  "EPH BIRTRARIA (DJILLALI BELKHENCHIR)": {
+    "id": 13,
+    "lat": 0,
+    "lng": 0
+  },
+  "EPH EL MOURADIA (DJILLALI RAHMOUNI)": {
+    "id": 14,
+    "lat": 0,
+    "lng": 0
+  },
+  "EHS DES BRULES ALGER": {
+    "id": 15,
+    "lat": 0,
+    "lng": 0
+  },
+  "EHS APPAREIL LOCOMOTEUR DE BEN AKNOUN ALGER": {
+    "id": 16,
+    "lat": 0,
+    "lng": 0
+  },
+  "EHS NEURO CHIRURGICAL ALI AIT IDIR ALGER": {
+    "id": 17,
+    "lat": 0,
+    "lng": 0
+  },
+  "EHS DES MALADIES INFECTIEUSES DR EL HADI FLICI EL K": {
+    "id": 18,
+    "lat": 0,
+    "lng": 0
+  },
+  "EHS CHIRURGIE CARDIAQUE ABDERRAHMANI MOHAMED" : {
+    "id": 19,
+    "lat": 0,
+    "lng": 0
+  },
+  "EHS ANTI CANCEREUX CPMC ALGER" : {
+    "id": 20,
+    "lat": 0,
+    "lng": 0
+  }
+}

@@ -1,0 +1,656 @@
+{
+  "services": {
+    "Gynécologie": [
+      {
+        "hospital_id": "0",
+        "beds": 27
+      },
+      {
+        "hospital_id": "1",
+        "beds": 45
+      },
+      {
+        "hospital_id": "2",
+        "beds": 11
+      },
+      {
+        "hospital_id": "3",
+        "beds": 40
+      },
+      {
+        "hospital_id": "4",
+        "beds": 36
+      },
+      {
+        "hospital_id": "5",
+        "beds": 44
+      },
+      {
+        "hospital_id": "6",
+        "beds": 34
+      },
+      {
+        "hospital_id": "7",
+        "beds": 22
+      },
+      {
+        "hospital_id": "8",
+        "beds": 21
+      },
+      {
+        "hospital_id": "1",
+        "beds": 8
+      }
+    ],
+    "Obstétrique": [
+      {
+        "hospital_id": "0",
+        "beds": 30
+      },
+      {
+        "hospital_id": "1",
+        "beds": 45
+      },
+      {
+        "hospital_id": "2",
+        "beds": 100
+      },
+      {
+        "hospital_id": "3",
+        "beds": 32
+      },
+      {
+        "hospital_id": "9",
+        "beds": 90
+      },
+      {
+        "hospital_id": "4",
+        "beds": 34
+      },
+      {
+        "hospital_id": "5",
+        "beds": 58
+      },
+      {
+        "hospital_id": "6",
+        "beds": 47
+      },
+      {
+        "hospital_id": "7",
+        "beds": 46
+      },
+      {
+        "hospital_id": "10",
+        "beds": 14
+      },
+      {
+        "hospital_id": "8",
+        "beds": 55
+      }
+    ],
+    "Hémodialyse": [
+      {
+        "hospital_id": "0",
+        "beds": 14
+      },
+      {
+        "hospital_id": "2",
+        "beds": 13
+      },
+      {
+        "hospital_id": "3",
+        "beds": 13
+      },
+      {
+        "hospital_id": "6",
+        "beds": 10
+      },
+      {
+        "hospital_id": "10",
+        "beds": 9
+      }
+    ],
+    "Néphrologie": [
+      {
+        "hospital_id": "1",
+        "beds": 43
+      },
+      {
+        "hospital_id": "0",
+        "beds": 13
+      },
+      {
+        "hospital_id": "2",
+        "beds": 15
+      },
+      {
+        "hospital_id": "3",
+        "beds": 18
+      }
+    ],
+    "Urgences méd_chir": [
+      {
+        "hospital_id": "0",
+        "beds": 57
+      },
+      {
+        "hospital_id": "2",
+        "beds": 3
+      },
+      {
+        "hospital_id": "3",
+        "beds": 16
+      },
+      {
+        "hospital_id": "4",
+        "beds": 19
+      },
+      {
+        "hospital_id": "7",
+        "beds": 10
+      },
+      {
+        "hospital_id": "11",
+        "beds": 10
+      }
+    ],
+    "Cardiologie": [
+      {
+        "hospital_id": "0",
+        "beds": 41
+      },
+      {
+        "hospital_id": "2",
+        "beds": 58
+      },
+      {
+        "hospital_id": "1",
+        "beds": 26
+      },
+      {
+        "hospital_id": "11",
+        "beds": 32
+      }
+    ],
+    "Chirurgie Générale": [
+      {
+        "hospital_id": "0",
+        "beds": 73
+      },
+      {
+        "hospital_id": "12",
+        "beds": 51
+      },
+      {
+        "hospital_id": "3",
+        "beds": 38
+      },
+      {
+        "hospital_id": "1",
+        "beds": 20
+      },
+      {
+        "hospital_id": "4",
+        "beds": 52
+      },
+      {
+        "hospital_id": "7",
+        "beds": 46
+      },
+      {
+        "hospital_id": "9",
+        "beds": 26
+      },
+      {
+        "hospital_id": "6",
+        "beds": 24
+      },
+      {
+        "hospital_id": "10",
+        "beds": 48
+      },
+      {
+        "hospital_id": "8",
+        "beds": 26
+      },
+      {
+        "hospital_id": "13",
+        "beds": 70
+      },
+      {
+        "hospital_id": "14",
+        "beds": 58
+      }
+    ],
+    "Chirurgie Infantile": [
+      {
+        "hospital_id": "0",
+        "beds": 74
+      },
+      {
+        "hospital_id": "2",
+        "beds": 28
+      },
+      {
+        "hospital_id": "1",
+        "beds": 43
+      },
+      {
+        "hospital_id": "5",
+        "beds": 43
+      },
+      {
+        "hospital_id": "13",
+        "beds": 56
+      },
+      {
+        "hospital_id": "9",
+        "beds": 3
+      }
+    ],
+    "Ophtalmologie": [
+      {
+        "hospital_id": "0",
+        "beds": 57
+      },
+      {
+        "hospital_id": "2",
+        "beds": 48
+      },
+      {
+        "hospital_id": "3",
+        "beds": 33
+      },
+      {
+        "hospital_id": "1",
+        "beds": 43
+      }
+    ],
+    "ORL": [
+      {
+        "hospital_id": "0",
+        "beds": 76
+      },
+      {
+        "hospital_id": "3",
+        "beds": 38
+      },
+      {
+        "hospital_id": "7",
+        "beds": 43
+      },
+      {
+        "hospital_id": "1",
+        "beds": 24
+      }
+    ],
+    "Pédiatrie": [
+      {
+        "hospital_id": "0",
+        "beds": 56
+      },
+      {
+        "hospital_id": "1",
+        "beds": 48
+      },
+      {
+        "hospital_id": "2",
+        "beds": 82
+      },
+      {
+        "hospital_id": "8",
+        "beds": 26
+      },
+      {
+        "hospital_id": "3",
+        "beds": 15
+      },
+      {
+        "hospital_id": "5",
+        "beds": 30
+      },
+      {
+        "hospital_id": "10",
+        "beds": 25
+      },
+      {
+        "hospital_id": "6",
+        "beds": 33
+      },
+      {
+        "hospital_id": "13",
+        "beds": 47
+      },
+      {
+        "hospital_id": "4",
+        "beds": 19
+      },
+      {
+        "hospital_id": "9",
+        "beds": 18
+      }
+    ],
+    "Pneumo Phtisiologie": [
+      {
+        "hospital_id": "0",
+        "beds": 39
+      },
+      {
+        "hospital_id": "3",
+        "beds": 34
+      },
+      {
+        "hospital_id": "10",
+        "beds": 34
+      },
+      {
+        "hospital_id": "1",
+        "beds": 46
+      }
+    ],
+    "Chirurgie Plastique": [
+      {
+        "hospital_id": "9",
+        "beds": 16
+      },
+      {
+        "hospital_id": "15",
+        "beds": 21
+      }
+    ],
+    "Médecine Interne": [
+      {
+        "hospital_id": "0",
+        "beds": 50
+      },
+      {
+        "hospital_id": "1",
+        "beds": 30
+      },
+      {
+        "hospital_id": "3",
+        "beds": 40
+      },
+      {
+        "hospital_id": "4",
+        "beds": 54
+      },
+      {
+        "hospital_id": "9",
+        "beds": 20
+      },
+      {
+        "hospital_id": "8",
+        "beds": 24
+      },
+      {
+        "hospital_id": "6",
+        "beds": 32
+      },
+      {
+        "hospital_id": "7",
+        "beds": 50
+      },
+      {
+        "hospital_id": "10",
+        "beds": 44
+      },
+      {
+        "hospital_id": "12",
+        "beds": 46
+      },
+      {
+        "hospital_id": "13",
+        "beds": 42
+      }
+    ],
+    "Neurologie": [
+      {
+        "hospital_id": "0",
+        "beds": 23
+      },
+      {
+        "hospital_id": "3",
+        "beds": 20
+      },
+      {
+        "hospital_id": "16",
+        "beds": 50
+      },
+      {
+        "hospital_id": "17",
+        "beds": 44
+      }
+    ],
+    "Neuro_Chirurgie": [
+      {
+        "hospital_id": "17",
+        "beds": 53
+      },
+      {
+        "hospital_id": "0",
+        "beds": 56
+      },
+      {
+        "hospital_id": "12",
+        "beds": 47
+      },
+      {
+        "hospital_id": "3",
+        "beds": 30
+      },
+      {
+        "hospital_id": "17",
+        "beds": 0
+      }
+    ],
+    "Infectiologie": [
+      {
+        "hospital_id": "18",
+        "beds": 82
+      }
+    ],
+    "Chirurgie Traumatologie": [
+      {
+        "hospital_id": "16",
+        "beds": 6
+      },
+      {
+        "hospital_id": "9",
+        "beds": 58
+      },
+      {
+        "hospital_id": "16",
+        "beds": 60
+      },
+      {
+        "hospital_id": "12",
+        "beds": 43
+      }
+    ],
+    "Chirurgie Cardiaque":[
+      {
+        "hospital_id": "0",
+        "beds": 20
+      },
+      {
+        "hospital_id": "2",
+        "beds": 2
+      },
+      {
+        "hospital_id": "11",
+        "beds": 20
+      },
+      {
+        "hospital_id": "19",
+        "beds": 68
+      },
+      {
+        "hospital_id": "19",
+        "beds": 68
+      }
+    ],
+    "Chirurgie Thoracique":[
+      {
+        "hospital_id": "0",
+        "beds": 49
+      },
+      {
+        "hospital_id": "3",
+        "beds": 10
+      }
+    ],
+    "Urologie":[
+      {
+        "hospital_id": "0",
+        "beds": 22
+      },
+      {
+        "hospital_id": "1",
+        "beds": 10
+      },
+      {
+        "hospital_id": "3",
+        "beds": 45
+      }
+    ],
+    "Dermatologie":[ 
+      {
+        "hospital_id": "0",
+        "beds": 73
+      },
+      {
+        "hospital_id": "3",
+        "beds": 30
+      }
+    ],
+    "Diabétologie":[
+      {
+        "hospital_id": "0",
+        "beds": 28
+      },
+      {
+        "hospital_id": "1",
+        "beds": 26
+      },
+      {
+        "hospital_id": "3",
+        "beds": 32
+      }
+    ],
+    "Gastro Entérologie":[
+      {
+        "hospital_id": "0",
+        "beds": 44
+      },
+      {
+        "hospital_id": "1",
+        "beds": 26
+      },
+      {
+        "hospital_id": "3",
+        "beds": 32
+      },
+      {
+        "hospital_id": "14",
+        "beds": 26
+      }
+    ],
+    "Allergologie":[
+      {
+        "hospital_id": "1",
+        "beds": 32
+      }
+    ],
+    "Hématologie":[
+      {
+        "hospital_id": "1",
+        "beds": 18
+      },
+      {
+        "hospital_id": "20",
+        "beds": 49
+      }
+    ],
+    "Rhumatologie":[
+      {
+        "hospital_id": "1",
+        "beds": 32
+      },
+      {
+        "hospital_id": "3",
+        "beds": 20
+      },
+      {
+        "hospital_id": "9",
+        "beds": 30
+      },
+      {
+        "hospital_id": "16",
+        "beds": 44
+      }
+    ],
+    "Radiothérapie":[
+      {
+        "hospital_id": "20",
+        "beds": 77
+      }  
+    ],
+    "Oncologie Médicale":[
+      {
+        "hospital_id": "1",
+        "beds": 14
+      },
+      {
+        "hospital_id": "20",
+        "beds": 86
+      },
+      {
+        "hospital_id": "10",
+        "beds": 84
+      }
+    ],
+    "Néonatologie":[
+      {
+        "hospital_id": "0",
+        "beds": 40
+      },
+      {
+        "hospital_id": "2",
+        "beds": 60
+      },
+      {
+        "hospital_id": "9",
+        "beds": 20
+      },
+      {
+        "hospital_id": "4",
+        "beds": 19
+      },
+      {
+        "hospital_id": "5",
+        "beds": 44
+      },
+      {
+        "hospital_id": "7",
+        "beds": 44
+      }
+    ],
+    "Endocrinologie":[
+      {
+        "hospital_id": "3",
+        "beds": 38
+      },
+      {
+        "hospital_id": "20",
+        "beds": 53
+      },
+      {
+        "hospital_id": "4",
+        "beds": 27
+      }
+    ]
+
+
+  }
+}
