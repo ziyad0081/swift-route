@@ -1,107 +1,107 @@
 {
   "CHU MUSTAPHA": {
     "id": 0,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.76184927705564,
+    "lng": 3.056220967141742
   },
   "CHU BENI MESSOUS": {
     "id": 1,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.778942158808825,
+    "lng": 2.981616595880589
   },
   "CHU PARNET": {
     "id": 2,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.73662535711364,
+    "lng": 3.1056997885320508
   },
   "CHU BAB EL OUED": {
     "id": 3,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.794798305956554,
+    "lng": 3.049253601597717
   },
   "EPH BOLOGHINE IBN ZIRI": {
     "id": 4,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.81053607735412,
+    "lng": 2.979109130267227
   },
   "EPH EL HARRACH (HASSEN BADI)": {
     "id": 5,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.71650344385953,
+    "lng": 3.137406413525128
   },
   "EPH ALI MEGHRAOUI AIN TAYA": {
     "id": 6,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.788992906885156,
+    "lng": 3.294619878347408
   },
   "EPH KOUBA (BACHIR MENTOURI)": {
     "id": 7,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.72654832938582,
+    "lng": 3.0867519644429255
   },
   "EPH ZERALDA (BOUKACEMI TAYEB)": {
     "id": 8,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.700149436671516,
+    "lng": 2.842949678683974
   },
   "CHU DJELLALI BOUNAAMA DOUERA": {
     "id": 9,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.66788,
+    "lng": 2.94074
   },
   "EPH ROUIBA": {
     "id": 10,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.7351221, 
+    "lng": 3.2857812
   },
   "EHS MEDECINE DU SPORT ET CARDIO VASCULAIRE DR M": {
     "id": 11,
     "lat": 0,
     "lng": 0
   },
-  "EPH DES URGENCES MEDICO- CHIRURGICALES SALIM ZM": {
+  "EPH DES URGENCES MEDICO- CHIRURGICALES SALIM ZMIRLI": {
     "id": 12,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.70350161385004,
+    "lng": 3.1237470153427234
   },
   "EPH BIRTRARIA (DJILLALI BELKHENCHIR)": {
     "id": 13,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.7731211148808,
+    "lng": 3.040074624524836
   },
   "EPH EL MOURADIA (DJILLALI RAHMOUNI)": {
     "id": 14,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.75501513312083,
+    "lng": 3.0382372929797765
   },
   "EHS DES BRULES ALGER": {
     "id": 15,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.77224682267169,
+    "lng": 3.0566796598245567
   },
   "EHS APPAREIL LOCOMOTEUR DE BEN AKNOUN ALGER": {
     "id": 16,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.75463665801327,
+    "lng": 3.0010462208468907
   },
   "EHS NEURO CHIRURGICAL ALI AIT IDIR ALGER": {
     "id": 17,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.78744933340281,
+    "lng": 3.0581691415269705
   },
-  "EHS DES MALADIES INFECTIEUSES DR EL HADI FLICI EL K": {
+  "EHS DES MALADIES INFECTIEUSES DR EL HADI FLICI": {
     "id": 18,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.753771082223395,
+    "lng": 3.0587604576713616
   },
   "EHS CHIRURGIE CARDIAQUE ABDERRAHMANI MOHAMED" : {
     "id": 19,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.734292613789705,
+    "lng": 3.0529179846572765
   },
   "EHS ANTI CANCEREUX CPMC ALGER" : {
     "id": 20,
-    "lat": 0,
-    "lng": 0
+    "lat": 36.76052857691805,
+    "lng": 3.054136867043932
   }
 }

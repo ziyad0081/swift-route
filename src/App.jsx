@@ -4,8 +4,9 @@ import "leaflet/dist/leaflet.css"
 import Navbar from './components/navbar/navbar';
 import UserForm from './components/userForm/UserForm';
 import { useEffect, useRef, useState } from 'react';
-
-
+import data from './assets/data/hospital_info.json'
+import services from './assets/data/hospitals.json'
+import { Icon, icon } from 'leaflet';
 function App() {
   const mapRef = useRef()
   function ClickHandler() {
@@ -20,7 +21,10 @@ function App() {
 
 }
 
-  
+  const hospital_icon = icon({
+    iconUrl: 'https://i.imgur.com/i0sha8g.png',
+    iconSize: [32, 32],
+  })
   const [userLatitude, setLatitude] = useState(null)
   const [userLongitude, setLongitude] = useState(null)
   const [loading, setLoading] = useState(true);
@@ -41,6 +45,7 @@ function App() {
   };
     
   useEffect(() => {
+    
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setLatitude(position.coords.latitude);
@@ -54,7 +59,20 @@ function App() {
     );
   }, []);
   
-  
+  const markers = Object.entries(data).map(([hospitalName, { lat, lng }]) => ( 
+    <Marker icon={hospital_icon} key={hospitalName} position={[lat, lng]}> 
+      <Popup>
+        {hospitalName}<br />
+        Latitude: {lat.toFixed(4)}<br />
+        Longitude: {lng.toFixed(4)}
+      </Popup>
+    </Marker>
+  ));
+  const user_marker = <Marker position={[userLatitude, userLongitude]}> 
+  <Popup>
+    <p className=' font-bold logo-font'>You are here !</p>
+  </Popup>
+</Marker>
   return (
     <>
     <Navbar/>
@@ -70,12 +88,8 @@ function App() {
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-    {
-     userLatitude && <Marker position={[userLatitude,userLongitude]} draggable={true}>
-      <Popup>
-        A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-    </Marker> }
+    {markers}
+    {user_marker}
     <Polyline pathOptions={{ color: 'blue' }} positions={coordinates} />
     </MapContainer>
   }
