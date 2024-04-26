@@ -28,6 +28,7 @@ function App() {
   const [userLatitude, setLatitude] = useState(null)
   const [userLongitude, setLongitude] = useState(null)
   const [loading, setLoading] = useState(true);
+  const [points,  setPoints] = useState([])
   const coordinates = [
     [51.505, -0.09],
     [51.51, -0.1],
@@ -43,7 +44,7 @@ function App() {
     return null;
   
   };
-    
+  useEffect(()=>console.log(points),[points])  
   useEffect(() => {
     
     navigator.geolocation.getCurrentPosition(
@@ -59,12 +60,10 @@ function App() {
     );
   }, []);
   
-  const markers = Object.entries(data).map(([hospitalName, { lat, lng }]) => ( 
-    <Marker icon={hospital_icon} key={hospitalName} position={[lat, lng]}> 
+  const markers = Object.entries(data).map(([id, { name , lat, lng }]) => ( 
+    <Marker icon={hospital_icon} key={id} position={[lat, lng]}> 
       <Popup>
-        {hospitalName}<br />
-        Latitude: {lat.toFixed(4)}<br />
-        Longitude: {lng.toFixed(4)}
+        <div  className='font-bold logo-font text-center'><span>{name}</span></div>
       </Popup>
     </Marker>
   ));
@@ -78,19 +77,19 @@ function App() {
     <Navbar/>
     <div className="flex w-lvw pt-16 h-lvh flex-row font-mono items-center justify-between">
       
-    <UserForm  latitude = {[userLatitude,setLatitude]} longitude={[userLongitude,setLongitude]}/>
+    <UserForm  latitude = {[userLatitude,setLatitude]} longitude={[userLongitude,setLongitude]} setPoints = {setPoints}/>
     
     {
     !loading && <MapContainer ref={mapRef} center={[userLatitude,userLongitude]} zoom={13} scrollWheelZoom={false}>
       <ClickHandler/>
-      <MapRecenter lat={userLatitude} lng={userLongitude} zoomLevel={13}/>
+      <MapRecenter lat={userLatitude} lng={userLongitude} zoomLevel={16}/>
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
     {markers}
     {user_marker}
-    <Polyline pathOptions={{ color: 'blue' }} positions={coordinates} />
+    { points.length && <Polyline positions={points}/>}
     </MapContainer>
   }
 

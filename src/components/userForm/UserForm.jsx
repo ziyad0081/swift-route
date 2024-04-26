@@ -6,18 +6,21 @@ import { useMap } from "react-leaflet";
 import services from '../../assets/data/hospitals.json'
 
 function UserForm(props){
+    
     const [selectedValue, setSelected] = useState('')
     const options = Object.keys(services.services).sort()
-    const select = <select className="shadow appearance-none border rounded transition-all ease-linear hover:ring-4 hover:ring-sky-500 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={selectedValue} onChange={(e)=>{setSelected(e.target.value)}}>
+    const setPoints = props.setPoints
+    const select = <select className="shadow font-bold appearance-none border rounded transition-all ease-linear hover:ring-4 hover:ring-sky-500 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={selectedValue} onChange={(e)=>{setSelected(e.target.value)}}>
         <option disabled selected value="">Choose a service</option>
     {options.map((option) => (
-      <option key={option} value={option}>
+      <option className="text-gray-700 font-logo font-bold" key={option} value={option}>
         {option}
       </option>
     ))}
   </select>
     const [userLat, setUserLat] = props.latitude 
     const [userLng, setUserLng] = props.longitude
+    const [targetHospital, setTargetHospital] = useState(null)
     const [userAddress, setAddress] = useState("")
     const flyTo = props.flyTo
     const [userReqService, setUserRequestedService] = useState(null)
@@ -44,9 +47,9 @@ function UserForm(props){
         }
     }
     async function handleUserReq(){
-        const api_res = await axios.post("http://127.0.0.1:5000/endpoint", {
+        const api_res = await axios.post("http://127.0.0.1:5000/get_nearest", {
             data: {
-                "service" : selectedValue,
+                "serv" : selectedValue,
                 "lat":userLat,
                 "lng" : userLng
             }
@@ -55,7 +58,9 @@ function UserForm(props){
                 'Content-Type': 'application/json'
             }
         })
-        console.log(api_res)
+        setPoints(api_res.data.iter.map(point=>[point.lat, point.lng]))
+        setTargetHospital(api_res.data.hos_name)
+        
     }
     return (
     <div className='flex  logo-font flex-col items-center h-full p-4 w-1/2'>
@@ -69,7 +74,10 @@ function UserForm(props){
         {select}
         <button className="p-2 mt-4 rounded bg-sky-500 text-yellow-50 font-bold hover:bg-sky-700 transition-all ease-in" onClick={handleUserReq}>Locate Address</button>
         {
-          userLat && <h2 className="font-bold mt-10"> Your current chosen coordinates are <span className="text-sky-600">({userLat.toFixed(5)},{userLng.toFixed(5)})</span> </h2>
+            targetHospital && <h2  className="mt-2 mb-2"> Closest hospital meeting criterion :  <span className= "text-rose-600 font-bold"> {targetHospital} </span> </h2>
+        }
+        {
+          userLat && <h2 className="font-bold "> Your current chosen coordinates are <span className="text-sky-600 font-bold">({userLat.toFixed(5)},{userLng.toFixed(5)})</span> </h2>
         }
     </div>
     )
