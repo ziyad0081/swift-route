@@ -17,9 +17,9 @@ else:
 app = Flask(__name__)
 CORS(app)
 #This file will contain the api needed to connect the path finding algorithms to the front end , don't worry about it.
-with open('/home/ziyeus/Desktop/swift-route/src/assets/data/hospitals.json') as f:
+with open(os.path.join(os.getcwd(),'src','assets','data','hospitals.json')) as f:
     services = json.load(f)["services"]
-with open('/home/ziyeus/Desktop/swift-route/src/assets/data/hospital_info.json') as g:
+with open(os.path.join(os.getcwd(),'src','assets','data','hospital_info.json')) as g:
     hospitals = json.load(g)
 
 @app.route("/get_nearest", methods=['POST'])
