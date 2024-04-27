@@ -1,6 +1,6 @@
 {
   "services": {
-    "Gynécologie": [
+    "Gynecologie": [
       {
         "hospital_id": "0",
         "beds": 27
@@ -38,7 +38,7 @@
         "beds": 21
       }
     ],
-    "Obstétrique": [
+    "Obstetrique": [
       {
         "hospital_id": "0",
         "beds": 30
@@ -84,7 +84,7 @@
         "beds": 55
       }
     ],
-    "Hémodialyse": [
+    "Hemodialyse": [
       {
         "hospital_id": "0",
         "beds": 14
@@ -106,7 +106,7 @@
         "beds": 9
       }
     ],
-    "Néphrologie": [
+    "Nephrologie": [
       {
         "hospital_id": "1",
         "beds": 43
@@ -124,7 +124,7 @@
         "beds": 18
       }
     ],
-    "Urgences méd_chir": [
+    "Urgences med_chir": [
       {
         "hospital_id": "0",
         "beds": 57
@@ -168,7 +168,7 @@
         "beds": 32
       }
     ],
-    "Chirurgie Générale": [
+    "Chirurgie Generale": [
       {
         "hospital_id": "0",
         "beds": 73
@@ -280,7 +280,7 @@
         "beds": 24
       }
     ],
-    "Pédiatrie": [
+    "Pediatrie": [
       {
         "hospital_id": "0",
         "beds": 56
@@ -354,7 +354,7 @@
         "beds": 21
       }
     ],
-    "Médecine Interne": [
+    "Medecine Interne": [
       {
         "hospital_id": "0",
         "beds": 50
@@ -520,7 +520,7 @@
         "beds": 30
       }
     ],
-    "Diabétologie":[
+    "Diabetologie":[
       {
         "hospital_id": "0",
         "beds": 28
@@ -534,7 +534,7 @@
         "beds": 32
       }
     ],
-    "Gastro Entérologie":[
+    "Gastro Enterologie":[
       {
         "hospital_id": "0",
         "beds": 44
@@ -558,7 +558,7 @@
         "beds": 32
       }
     ],
-    "Hématologie":[
+    "Hematologie":[
       {
         "hospital_id": "1",
         "beds": 18
@@ -586,13 +586,13 @@
         "beds": 44
       }
     ],
-    "Radiothérapie":[
+    "Radiotherapie":[
       {
         "hospital_id": "20",
         "beds": 77
       }  
     ],
-    "Oncologie Médicale":[
+    "Oncologie Medicale":[
       {
         "hospital_id": "1",
         "beds": 14
@@ -606,7 +606,7 @@
         "beds": 84
       }
     ],
-    "Néonatologie":[
+    "Neonatologie":[
       {
         "hospital_id": "0",
         "beds": 40
