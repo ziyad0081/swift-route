@@ -1,7 +1,9 @@
-import random
 import os
 import osmnx as ox
 import networkx as nx
+from osmnx import distance
+
+NodeID = int
 
 FILE_PATH = "algiers.graphml"
 if os.path.exists(FILE_PATH):
@@ -9,6 +11,8 @@ if os.path.exists(FILE_PATH):
 else:
     G = ox.graph_from_place("Algiers", network_type="drive")
     ox.save_graphml(G, filepath=FILE_PATH)
+
+
 
 class Node:
     def __init__(self, state, parent=None, action=None, cost=0):
@@ -19,89 +23,50 @@ class Node:
 
     def __eq__(self, other):
         return self.state == other.state
-
-    def __hash__(self):
-        return hash(tuple(map(tuple, self.state)))
     
     
 class HealthcareNetworkProblem:
-    def __init__(self, initial_state, goal_state, G):
+    def __init__(self, initial_state:NodeID , goal_state:NodeID, transition_model):
         self.initial_state = initial_state
         self.goal_state = goal_state
-        self.G = G
+        self.transition_model = transition_model
     
-    def is_goal_test(self, state):
+    def is_goal_test(self, state:NodeID):
         return state == self.goal_state
     
-    def get_valid_actions(self, state):
-        return list(self.G.neighbors(state)) 
+    def get_valid_actions(self, state:NodeID):
+        return list(self.transition_model.neighbors(state)) 
 
-    def apply_action(self, state, action):
+    def apply_action(self, state:NodeID, action:NodeID):
         return action 
-    
-    def calculate_path_cost(self, parent_node, child_node):
-  
-        edge_length = self.G[parent_node][child_node][0].get('length')
-        return edge_length
 
-    def expand_node(self, node):
+    def expand_node(self, node:Node):
         state = node.state
         valid_actions = self.get_valid_actions(state)
         child_nodes = []
         for action in valid_actions:
             child_state = action  # Assuming action directly leads to the next state
-            edge_length = self.G.edges[node.state, child_state][0]['length']
+            edge_length = self.transition_model[node.state][child_state][0]['length']
             child_cost = node.cost + edge_length
             child_node = Node(child_state, parent=node, action=action, cost=child_cost)
             child_nodes.append(child_node)
         return child_nodes
+    def heuristic(self,node:Node):
+        hospital_coords = (G.nodes[self.goal_state]["y"],G.nodes[self.goal_state]["x"])
+        node_id = node.state
+        node_coords = (G.nodes[node_id]["y"],G.nodes[node_id]["x"])
+        return distance.great_circle(lat1=node_coords[0],lon1=node_coords[1],lat2=hospital_coords[0],lon2=hospital_coords[1])
 
+hospital_locations = (36.700149436671516,2.842949678683974)
+user = (36.70104,2.84078)
 
-hospital_locations = {
-    "0": {"lat": 36.76184927705564, "lng": 3.056220967141742},
-    "1": {"lat": 36.778942158808825, "lng": 2.981616595880589},
-    # Add other hospital locations here
-}
+hospital = ox.nearest_nodes(G,hospital_locations[1],hospital_locations[0])
+user = ox.nearest_nodes(G,user[1],user[0])
 
-# Choose a random hospital ID
-random_hospital_id = random.choice(list(hospital_locations.keys()))
+P = HealthcareNetworkProblem(user, hospital,G)
+nodefortest = Node(state=user,parent=None,action=None)
+print([i.state for i in P.expand_node(nodefortest)])
 
-# Randomly choose user location within the range of hospital locations
-user_location = (random.uniform(36.5, 37), random.uniform(2.8, 3.3))
+print(P.is_goal_test(user))
 
-# Ensure the user location is close to one of the hospital locations
-min_distance = float('inf')
-for hospital_id, hospital_loc in hospital_locations.items():
-    distance = ((user_location[0] - hospital_loc['lat']) ** 2 + (user_location[1] - hospital_loc['lng']) ** 2) ** 0.5
-    if distance < min_distance:
-        min_distance = distance
-        closest_hospital_id = hospital_id
-
-# Example goal state (replace with your actual goal state)
-goal_state = hospital_locations[random_hospital_id]
-
-# Example initial state (replace with your actual initial state)
-initial_state = (hospital_locations[closest_hospital_id]['lat'], hospital_locations[closest_hospital_id]['lng'])
-
-# Create an instance of the HealthcareNetworkProblem class
-problem = HealthcareNetworkProblem(initial_state, goal_state, G)
-
-# Test the is_goal_test method
-test_state = goal_state  # Goal state
-print("Is test state a goal state?", problem.is_goal_test(test_state))  # Output: True
-
- # Test the get_valid_actions method
-valid_actions = problem.get_valid_actions(initial_state)
-print("Valid actions from initial state:", valid_actions) 
-
- # Test the apply_action method
-action = valid_actions[0]  # Example action
-new_state = problem.apply_action(initial_state, action)
-print("New state after applying action:", new_state) 
-
-# Test the expand_node method
-node = Node(state=initial_state, parent=None, action=None, cost=0)
-child_nodes = problem.expand_node(node)
-print("Child nodes after expanding the initial node:")
-for child_node in child_nodes:
-    print(child_node.state, child_node.action, child_node.cost)
+print(P.heuristic(nodefortest))
