@@ -30,6 +30,9 @@ class HealthcareNetworkProblem:
         self.initial_state = initial_state
         self.goal_state = goal_state
         self.transition_model = transition_model
+    def reinitialize_states(self, initial_state:NodeID, goal_state:NodeID ) -> None :
+        self.initial_state = initial_state
+        self.goal_state = goal_state
     
     def is_goal_test(self, state:NodeID):
         return state == self.goal_state
@@ -56,17 +59,3 @@ class HealthcareNetworkProblem:
         node_id = node.state
         node_coords = (G.nodes[node_id]["y"],G.nodes[node_id]["x"])
         return distance.great_circle(lat1=node_coords[0],lon1=node_coords[1],lat2=hospital_coords[0],lon2=hospital_coords[1])
-
-hospital_locations = (36.700149436671516,2.842949678683974)
-user = (36.70104,2.84078)
-
-hospital = ox.nearest_nodes(G,hospital_locations[1],hospital_locations[0])
-user = ox.nearest_nodes(G,user[1],user[0])
-
-P = HealthcareNetworkProblem(user, hospital,G)
-nodefortest = Node(state=user,parent=None,action=None)
-print([i.state for i in P.expand_node(nodefortest)])
-
-print(P.is_goal_test(user))
-
-print(P.heuristic(nodefortest))

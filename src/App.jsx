@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import data from './assets/data/hospital_info.json'
 import services from './assets/data/hospitals.json'
 import { Icon, icon } from 'leaflet';
+import DetailsPopup from './components/DetailsPopup/DetailsPopup';
 function App() {
   const mapRef = useRef()
   function ClickHandler() {
@@ -29,6 +30,8 @@ function App() {
   const [userLongitude, setLongitude] = useState(null)
   const [loading, setLoading] = useState(true);
   const [points,  setPoints] = useState([])
+  const [search_details, setDetails] = useState(null)
+  const [togglePopup, setTogglePopup] = useState(false)
   const coordinates = [
     [51.505, -0.09],
     [51.51, -0.1],
@@ -76,8 +79,8 @@ function App() {
     <>
     <Navbar/>
     <div className="flex w-lvw pt-16 h-lvh flex-row font-mono items-center justify-between">
-      
-    <UserForm  latitude = {[userLatitude,setLatitude]} longitude={[userLongitude,setLongitude]} setPoints = {setPoints}/>
+    
+    <UserForm  latitude = {[userLatitude,setLatitude]} longitude={[userLongitude,setLongitude]} setPoints = {setPoints} details={[search_details, setDetails]} toggle={[togglePopup, setTogglePopup]}/>
     
     {
     !loading && <MapContainer ref={mapRef} center={[userLatitude,userLongitude]} zoom={13} scrollWheelZoom={false}>
@@ -92,7 +95,10 @@ function App() {
     { points.length && <Polyline positions={points}/>}
     </MapContainer>
   }
-
+    { togglePopup && search_details ?
+      <DetailsPopup details={search_details} toggle={setTogglePopup}/>:
+      null
+    }
     </div>
     </>
   )
