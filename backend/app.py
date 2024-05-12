@@ -7,8 +7,9 @@ import osmnx as ox
 import matplotlib.pyplot as plt # type: ignore
 import numpy as np
 import os
-from HCSolver import LocalSearchSolver
+from Search import Search
 from HealthcareNetworkProblem import HealthcareNetworkProblem
+
 FILE_PATH = "algiers.graphml"
 if os.path.exists(FILE_PATH):
     G = ox.load_graphml(FILE_PATH)
@@ -25,14 +26,12 @@ with open(os.path.join(os.getcwd(),'src','assets','data','hospital_info.json')) 
     hospitals = json.load(g)
 
 P = HealthcareNetworkProblem(None,None,G)
-
-hc = LocalSearchSolver(P)
-
+S = Search(P,None)
 @app.route("/debug", methods=['POST'])
 def DebugingEndPoint():
     #USED FOR DEBUGGING , WILL BE REMOVED LATER.
     req_data = request.get_json()["data"]
-    user_lat,user_lng, user_serv  = req_data["lat"],req_data["lng"],req_data["serv"]
+    user_lat,user_lng, user_serv,search_method  = req_data["lat"],req_data["lng"],req_data["serv"],req_data["method"]
     possible_hospitals_by_service = [hospital['hospital_id'] for hospital in services[user_serv]]
     possible_hospitals_by_name = [hospitals[i] for i in possible_hospitals_by_service]
     closest_hospital = min(possible_hospitals_by_name, key=lambda hospital: distance.great_circle(user_lat, user_lng, hospital["lat"], hospital["lng"]))
@@ -41,9 +40,9 @@ def DebugingEndPoint():
     user_node = ox.nearest_nodes(G, user_lng, user_lat)
     max_nodes = len(list(G.nodes()))
     P.reinitialize_states(user_node, hospital_node)
-    
-    route = hc.SimulatedAnnealingWrapper()
-    return json.dumps(route)
+    S.method = search_method
+    route_info = S.RunSearch()
+    return json.dumps(route_info)
 
 
 @app.route("/get_nearest", methods=['POST'])
@@ -51,7 +50,7 @@ def ReturnNearestHospital():
     #recieve request body
     req_data = request.get_json()["data"]
     #get user coordinates and requested service
-    user_lat,user_lng, user_serv  = req_data["lat"],req_data["lng"],req_data["serv"]
+    user_lat,user_lng, user_serv, search_method  = req_data["lat"],req_data["lng"],req_data["serv"],req_data["method"]
 
     #get all fitting candidate hospital ids (ones providing user_serv)
     possible_hospitals_by_service = [hospital['hospital_id'] for hospital in services[user_serv]]
@@ -71,8 +70,10 @@ def ReturnNearestHospital():
     max_nodes = len(list(G.nodes())) #nodes count in the graph (used in search statistics)
 
     P.reinitialize_states(user_node, hospital_node) #initialize problem with our states
-    
-    route_info = hc.KLocalBeamSearchWrapper(5) #This call here is the only thing that will differ between search algorithms
+    S.method = search_method
+    willGenerateVisualization = req_data["viz"]
+
+    route_info = S.RunSearch(willGenerateVisualization) #This call here is the only thing that will differ between search algorithms 
 
     route = route_info.get("path") #get the path from returned dict
 

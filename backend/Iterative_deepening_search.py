@@ -2,8 +2,8 @@ import os
 import osmnx as ox
 from osmnx import distance
 import networkx as nx
-from backend import HealthcareNetworkProblem
-from backend import Node
+from HealthcareNetworkProblem import HealthcareNetworkProblem, Node
+
 
 
 NodeID = int
@@ -19,13 +19,13 @@ else:
 
 
 class IterativeDeepeningSearch:
-    def __init__(self, problem: HealthcareNetworkProblem, max_depth_limit: int = 100):
+    def __init__(self, problem: HealthcareNetworkProblem, max_depth_limit: int = 500):
         self.problem = problem
         self.max_depth_limit = max_depth_limit
-        self.visited = set() 
+        self.node_expansion = 0
     def search(self):
+        self.node_expansion = 0
         for depth in range(self.max_depth_limit):
-            self.visited.clear()  
             result = self.depth_limited_search(self.problem.initial_state, depth)
             if result is not None:
                 return result
@@ -35,43 +35,65 @@ class IterativeDeepeningSearch:
         return self.recursive_dls(Node(state), depth_limit, 0)
 
     def recursive_dls(self, node: Node, depth_limit: int, current_depth: int):
+        visited = set() 
         if self.problem.is_goal_test(node.state):
-            return node
+            return node,self.node_expansion,True
         elif current_depth == depth_limit:
             return None
         else:
-            self.visited.add(node.state)
+            visited.add(node.state)
+            self.node_expansion += 1
             for child in self.problem.expand_node(node):
-                if child.state not in self.visited:
+                if child.state not in visited:
                     result = self.recursive_dls(child, depth_limit, current_depth + 1)
                     if result is not None:
-                        return result
+                        return result,self.node_expansion,True
             return None
+        
+
+class BreadthFirstSearch:
+    def __init__(self, problem:HealthcareNetworkProblem):
+        self.problem = problem
+
+    def search(self):
+        frontier = [Node(self.problem.initial_state,parent=None, action=None, cost=0)]
+        expansion_counter = 0
+        while frontier:
+            current_node = frontier.pop(0)
+
+            children = self.problem.expand_node(current_node)
+            expansion_counter += 1
+            
+            for child in children:
+                if self.problem.is_goal_test(child.state):
+                    return child,expansion_counter,True
+                frontier.append(child)
+        return None
 
 
-hospital_locations = (36.78144029121514, 2.981447383316992)
-user = (36.687997972279334, 2.869543352130313)
+# hospital_locations = (36.78144029121514, 2.981447383316992)
+# user = (36.687997972279334, 2.869543352130313)
 
 
-hospital_node = ox.nearest_nodes(G, hospital_locations[1], hospital_locations[0])
-user_node = ox.nearest_nodes(G, user[1], user[0])
+# hospital_node = ox.nearest_nodes(G, hospital_locations[1], hospital_locations[0])
+# user_node = ox.nearest_nodes(G, user[1], user[0])
 
 
-problem = HealthcareNetworkProblem(user_node, hospital_node, G)
+# problem = HealthcareNetworkProblem(user_node, hospital_node, G)
 
 
-ids = IterativeDeepeningSearch(problem, max_depth_limit=300)  
+# ids = IterativeDeepeningSearch(problem, max_depth_limit=300)  
 
 
-result_node = ids.search()
+# result_node = ids.search()
 
 
-if result_node is not None:
-    path = []
-    while result_node is not None:
-        path.append(result_node.state)
-        result_node = result_node.parent
-    path.reverse()
-    print("Path found:", path)
-else:
-    print("Goal not found within the depth limit.")
+# if result_node is not None:
+#     path = []
+#     while result_node is not None:
+#         path.append(result_node.state)
+#         result_node = result_node.parent
+#     path.reverse()
+#     print("Path found:", path)
+# else:
+#     print("Goal not found within the depth limit.")

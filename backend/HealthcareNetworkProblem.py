@@ -1,4 +1,5 @@
 import os
+from networkx import MultiDiGraph
 import osmnx as ox
 import networkx as nx
 from osmnx import distance
@@ -24,9 +25,11 @@ class Node:
     def __eq__(self, other):
         return self.state == other.state
     
+    def __lt__(self, other):
+        return self.cost < other.cost
     
 class HealthcareNetworkProblem:
-    def __init__(self, initial_state:NodeID , goal_state:NodeID, transition_model):
+    def __init__(self, initial_state:NodeID , goal_state:NodeID, transition_model:MultiDiGraph):
         self.initial_state = initial_state
         self.goal_state = goal_state
         self.transition_model = transition_model
@@ -42,8 +45,8 @@ class HealthcareNetworkProblem:
 
     def apply_action(self, state:NodeID, action:NodeID):
         return action 
-
-    def expand_node(self, node:Node):
+    
+    def expand_node(self, node:Node, heuristic:bool=False):
         state = node.state
         valid_actions = self.get_valid_actions(state)
         child_nodes = []
