@@ -26,6 +26,10 @@ function App() {
     iconUrl: 'https://i.imgur.com/i0sha8g.png',
     iconSize: [32, 32],
   })
+  const user_icon = icon({
+    iconUrl: "https://i.imgur.com/LlBnn1p.png",
+    iconSize: [40, 40]
+  })
   const [userLatitude, setLatitude] = useState(null)
   const [userLongitude, setLongitude] = useState(null)
   const [loading, setLoading] = useState(true);
@@ -70,7 +74,7 @@ function App() {
       </Popup>
     </Marker>
   ));
-  const user_marker = <Marker position={[userLatitude, userLongitude]}> 
+  const user_marker = <Marker icon={user_icon} position={[userLatitude, userLongitude]}> 
   <Popup>
     <p className=' font-bold logo-font'>You are here !</p>
   </Popup>

@@ -5,7 +5,7 @@ import axios from "axios";
 import { useMap } from "react-leaflet";
 import services from '../../assets/data/hospitals.json'
 import DetailsPopup from "../DetailsPopup/DetailsPopup";
-import spinner from "../../../public/180-ring.svg"
+import spinner from "../../assets/180-ring.svg"
 
 
 
