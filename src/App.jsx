@@ -27,7 +27,7 @@ function App() {
     iconSize: [32, 32],
   })
   const user_icon = icon({
-    iconUrl: "https://i.imgur.com/LlBnn1p.png",
+    iconUrl: "https://i.imgur.com/xjt8XZY.png",
     iconSize: [40, 40]
   })
   const [userLatitude, setLatitude] = useState(null)
