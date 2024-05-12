@@ -47,7 +47,7 @@ function App() {
     return null;
   
   };
-  useEffect(()=>console.log(points),[points])  
+  
   useEffect(() => {
     
     navigator.geolocation.getCurrentPosition(

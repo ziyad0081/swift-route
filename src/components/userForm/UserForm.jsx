@@ -5,7 +5,7 @@ import axios from "axios";
 import { useMap } from "react-leaflet";
 import services from '../../assets/data/hospitals.json'
 import DetailsPopup from "../DetailsPopup/DetailsPopup";
-import spinner from "../../assets/180-ring.svg"
+import spinner from "../../../public/180-ring.svg"
 
 
 
@@ -63,7 +63,7 @@ function UserForm(props){
         if(data.length > 0){
             setUserLat(parseFloat(data[0].lat))
             setUserLng(parseFloat(data[0].lon))
-            console.log(data[0].lat,data[0].lon);
+            
             const req = await axios.post("http://127.0.0.1:5000/endpoint",{
                 data: {
                     "lat":userLat,
@@ -80,7 +80,7 @@ function UserForm(props){
     async function handleUserReq(){
         setLoading(true)
         try {
-            let endpoint = useLocalServer ? "http://127.0.0.1:5000/get_nearest" : "http://ziyeus.pythonanywhere.com/get_nearest";
+            let endpoint = useLocalServer ? "http://127.0.0.1:5000/get_nearest" : "https://ziyeus.pythonanywhere.com/get_nearest";
 
             let api_res = await axios.post(endpoint, {
             data: {
