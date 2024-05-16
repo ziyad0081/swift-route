@@ -100,6 +100,7 @@ class IterativeDeepeningSearch:
         self.problem = problem
         self.max_depth_limit = max_depth_limit
         self.node_expansion = 0
+    
     def search(self):
         self.node_expansion = 0
         visited = {}
@@ -155,7 +156,6 @@ class BreadthFirstSearch:
             
             for child in children:
                 if child.state not in visited and child not in frontier:
-                    visited[child.state] = True
                     if self.problem.is_goal_test(child.state):
                         return child, expansion_counter, True, visited
                     frontier.append(child)

@@ -46,13 +46,14 @@ class LocalSearchSolver:
 
     def HillClimbingSearch(self) -> Solution|None:
         """
-        This function performs hill climbing search on the problem given as argument in class initialization        
+        This function performs a hybrid Stochastic Hill climbing search algorithm on the problem given as argument in class initialization        
         """
 
         #Initialize initial state in the state space
         current_node = Node(state=self.problem.initial_state,parent=None,action=None, cost=0) 
         node_expansion = 0
         visited = {}
+        downhill_counter = 10
         while(1):
             #if current node is a goal, just return it
             visited[current_node.state] = True
@@ -63,18 +64,38 @@ class LocalSearchSolver:
             successors = self.problem.expand_node(current_node)
             
             node_expansion += 1
-            #choose the best
-            best_successor = min(successors, key= lambda successor:self.problem.heuristic(successor))
             
-            #get both the current state's evaluation and its best neighbour's
-            best_successor_eval = self.problem.heuristic(best_successor)
+            #Take only better neighbours
             current_node_eval = self.problem.heuristic(current_node)
+            better_successors_pool = list(filter(lambda successor: self.problem.heuristic(successor) <= current_node_eval, successors ))
+            try:
+                #We get the best element in the better successors
+                best_in_better = min(better_successors_pool, key=lambda successor: self.problem.heuristic(successor))
+                
+                #if the best element's eval is very small (less than 150m) we take it instead in fear of deviating away from an easy goal (as the distance is very small and we can risk taking greedy moves)
+                if(self.problem.heuristic(best_in_better) < 150):
+                    best_successor = best_in_better
+                else: #, we proceed with taking a random move among the best ones
+                    best_successor = random.choice(better_successors_pool) #Choose a better neighbour at random
+            except (IndexError,ValueError):
+                #if there are no better moves , we take the best downhill moves in hope of exploring new places that might lead to goal
+                try:
+
+                    if(downhill_counter > 0):
+                        best_successor = random.choice(successors)
+                        downhill_counter -= 1 #yet we do it only down_hill counter times
+                except IndexError:
+                    best_successor = current_node # If the list is empty just take the current node as the best next
+            
+            #get neighbour's evaluation
+            best_successor_eval = self.problem.heuristic(best_successor)
+            
             
             #Return none if no improvement is achieved by moving to a neighbour (local maximum)
-            if current_node_eval <= best_successor_eval:
+            if current_node_eval <= best_successor_eval and downhill_counter < 1 or (current_node_eval == best_successor_eval and downhill_counter >= 1) :
                 return current_node, node_expansion, False,visited
             else:
-                #if there is improvement , reiterate with the best neighbour
+                #if there is improvement , reiterate with the best neighbour or we are allowed some downhill moves
                 current_node = best_successor
 
     
@@ -161,7 +182,9 @@ class LocalSearchSolver:
         current_individual = Node(state=self.problem.initial_state,parent=None,action=None, cost=0)
         current_tempurature = initial_temperature
         node_expansion = 0
+        visited = {}
         while current_tempurature > cold_threshold:
+            visited[current_individual.state] = True
             if self.problem.is_goal_test(current_individual.state):
                 return current_individual,node_expansion,True
             current_individual_neighbours = self.problem.expand_node(current_individual)
@@ -179,7 +202,7 @@ class LocalSearchSolver:
             current_tempurature *= cooling_rate
         
         
-        return current_individual,node_expansion,self.problem.is_goal_test(current_individual.state)
+        return current_individual,node_expansion,self.problem.is_goal_test(current_individual.state),visited
         
         
         
