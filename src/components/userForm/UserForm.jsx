@@ -111,8 +111,8 @@ function UserForm(props){
     }
     return (
     <div className='flex  logo-font flex-col items-center h-full p-4 w-1/2'>
-        <h1 className="font-bold text-center text-sky-600 text-2xl w-11/12"> Enter your address and requested service below and hit go !</h1>
-        <p className="mt-5">Alternatively you can <span className="font-bold text-sky-500">drop a marker</span> on the map to locate your current position</p>
+        <h1 className="font-bold text-center text-sky-600 text-2xl w-11/12"> Drop a marker in your location and hit Generate Path!</h1>
+        
         <hr className="w-full h-px bg-gray-200 border-none mt-4 mb-4"/>
         <label htmlFor="service" className=" self-start ml-4 mb-4 font-bold text-xl"> Emergency Service </label>
         {select}
@@ -120,11 +120,11 @@ function UserForm(props){
         {select_method}
         
         
-        <div className="flex gap-2 w-full px-2 mt-2 " title="Flask app MUST be listening on 127.0.0.1:5000/get_nearest. Speeds up response time CONSIDERABLY.">
+        {/* <div className="flex gap-2 w-full px-2 mt-2 " title="Flask app MUST be listening on 127.0.0.1:5000/get_nearest. Speeds up response time CONSIDERABLY.">
             <input name="local" type="checkbox" onChange={(e)=>setLocalServer(e.target.checked)}/>
             <h2 className="font-bold">Use local Flask server </h2>
-        </div>
-        <div className="flex gap-2 w-full px-2 " title="(Slows up response time CONSIDERABLY)">
+        </div> */}
+        <div className="flex gap-2 w-full px-2  my-2" title="(Slows up response time CONSIDERABLY)">
             <input name="local" type="checkbox" onChange={(e)=>setViz(e.target.checked)}/>
             <h2 className="font-bold">Generate search space visualization</h2>
         </div>
@@ -136,7 +136,7 @@ function UserForm(props){
             targetHospital && <h2  className="mt-2 mb-2"> Closest hospital meeting criterion :  <span className= "text-rose-600 font-bold"> {targetHospital} </span> </h2>
         }
         {
-          userLat && <h2 className="font-bold "> Your current chosen coordinates are <span className="text-sky-600 font-bold">({userLat.toFixed(5)},{userLng.toFixed(5)})</span> </h2>
+          userLat && <h2 className="font-bold my-4 "> Your current chosen coordinates are <span className="text-sky-600 font-bold">({userLat.toFixed(5)},{userLng.toFixed(5)})</span> </h2>
         }
         
     </div>
