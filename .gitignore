@@ -3,3 +3,4 @@ cache
 backend/__pycache__
 backend/cache
 search_result
+dist/

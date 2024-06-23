@@ -80,7 +80,7 @@ function UserForm(props){
     async function handleUserReq(){
         setLoading(true)
         try {
-            let endpoint = useLocalServer ? "http://127.0.0.1:5000/get_nearest" : "https://ziyeus.pythonanywhere.com/get_nearest";
+            let endpoint ="http://127.0.0.1:5000/get_nearest";
 
             let api_res = await axios.post(endpoint, {
             data: {
